@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak
+  namespace: ostock
+data:
+  jwt-issuer-uri: ${KEYCLOAK_ISSUER_URI}

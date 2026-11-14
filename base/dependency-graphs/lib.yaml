@@ -1,0 +1,26 @@
+apiVersion: cicd.nguiland.io/v1alpha1
+kind: DependencyGraph
+metadata:
+  name: lib
+  namespace: ostock
+spec:
+  repositories:
+    - name: dto
+      dependencies:
+        - name: nguiland-dependencies
+          namespace: maven
+    - name: orm
+      dependencies:
+        - name: nguiland-dependencies
+          namespace: maven
+    - name: cross-cutting-concerns
+      dependencies:
+        - name: nguiland-dependencies
+          namespace: maven
+    - name: ms-parent
+      dependencies:
+        - name: nguiland-ms-parent
+          namespace: maven
+        - name: orm
+        - name: dto
+        - name: cross-cutting-concerns

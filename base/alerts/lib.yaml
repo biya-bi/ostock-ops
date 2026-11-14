@@ -1,0 +1,25 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: lib
+  namespace: ostock
+spec:
+  providerRef:
+    name: git-event-listener
+  inclusionList:
+    - "^stored artifact for commit '.*'$"
+  eventSeverity: info
+  eventMetadata:
+    eventListenerAddress: http://el-maven-lib.cicd.svc.cluster.local:8080/
+    pipelineName: maven-lib
+    pipelineNamespace: cicd
+    contextDir: .
+  eventSources:
+    - kind: GitRepository
+      name: cross-cutting-concerns
+    - kind: GitRepository
+      name: dto
+    - kind: GitRepository
+      name: ms-parent
+    - kind: GitRepository
+      name: orm

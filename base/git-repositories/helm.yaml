@@ -1,0 +1,107 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: angular-frontend-chart
+  namespace: ostock
+spec:
+  interval: 1m0s
+  url: ssh://github.com/biya-bi/ostock-helm.git
+  ref:
+    branch: develop
+  secretRef:
+    name: ssh-credentials
+  ignore: |
+    # Exclude all
+    /*
+    # Include specific relevant directory
+    !/angular-frontend/
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: config-service-chart
+  namespace: ostock
+spec:
+  interval: 1m0s
+  url: ssh://github.com/biya-bi/ostock-helm.git
+  ref:
+    branch: develop
+  secretRef:
+    name: ssh-credentials
+  ignore: |
+    # Exclude all
+    /*
+    # Include specific relevant directory
+    !/config-service/
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: eureka-service-chart
+  namespace: ostock
+spec:
+  interval: 1m0s
+  url: ssh://github.com/biya-bi/ostock-helm.git
+  ref:
+    branch: develop
+  secretRef:
+    name: ssh-credentials
+  ignore: |
+    # Exclude all
+    /*
+    # Include specific relevant directory
+    !/eureka-service/
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: gateway-service-chart
+  namespace: ostock
+spec:
+  interval: 1m0s
+  url: ssh://github.com/biya-bi/ostock-helm.git
+  ref:
+    branch: develop
+  secretRef:
+    name: ssh-credentials
+  ignore: |
+    # Exclude all
+    /*
+    # Include specific relevant directory
+    !/gateway-service/
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: license-service-chart
+  namespace: ostock
+spec:
+  interval: 1m0s
+  url: ssh://github.com/biya-bi/ostock-helm.git
+  ref:
+    branch: develop
+  secretRef:
+    name: ssh-credentials
+  ignore: |
+    # Exclude all
+    /*
+    # Include specific relevant directory
+    !/license-service/
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: organization-service-chart
+  namespace: ostock
+spec:
+  interval: 1m0s
+  url: ssh://github.com/biya-bi/ostock-helm.git
+  ref:
+    branch: develop
+  secretRef:
+    name: ssh-credentials
+  ignore: |
+    # Exclude all
+    /*
+    # Include specific relevant directory
+    !/organization-service/

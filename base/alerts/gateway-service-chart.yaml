@@ -1,0 +1,22 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: gateway-service-chart
+  namespace: ostock
+  labels:
+    category: microservice
+spec:
+  providerRef:
+    name: git-event-listener
+  inclusionList:
+    - "^stored artifact for commit '.*'$"
+  eventSeverity: info
+  eventMetadata:
+    eventListenerAddress: http://el-helm-publish.cicd.svc.cluster.local:8080
+    pipelineName: helm-publish
+    pipelineNamespace: cicd
+    chartContext: gateway-service
+    repoPath: charts/ostock
+  eventSources:
+    - kind: GitRepository
+      name: gateway-service-chart

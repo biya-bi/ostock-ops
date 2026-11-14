@@ -1,0 +1,13 @@
+apiVersion: cicd.nguiland.io/v1alpha1
+kind: DependencyGraph
+metadata:
+  name: charts
+  namespace: ostock
+spec:
+  repositories:
+    - name: config-service-chart
+    - name: eureka-service-chart
+    - name: gateway-service-chart
+    - name: license-service-chart
+    - name: organization-service-chart
+    - name: angular-frontend-chart

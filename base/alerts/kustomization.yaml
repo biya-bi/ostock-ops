@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - config-service-chart.yaml
+  - docker.yaml
+  - eureka-service-chart.yaml
+  - gateway-service-chart.yaml
+  - lib.yaml
+  - license-service-chart.yaml
+  - organization-service-chart.yaml

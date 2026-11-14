@@ -1,0 +1,30 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: license-service
+  namespace: ostock
+spec:
+  interval: 10m
+  dependsOn:
+    - name: artifactory-jcr
+      namespace: ${ENVIRONMENT}
+  chart:
+    spec:
+      chart: charts/ostock/license-service
+      version: "*" # TODO: Replace with a pinned chart version before production deployment
+      sourceRef:
+        kind: HelmRepository
+        name: oci-registry
+        namespace: ${ENVIRONMENT}
+      interval: 10m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    image:
+      repository: ${IMAGE_REGISTRY_HOST}/docker-local/com.optimagrowth/license-service
+    envMap:
+      SPRING_PROFILES_ACTIVE: ${ENVIRONMENT}

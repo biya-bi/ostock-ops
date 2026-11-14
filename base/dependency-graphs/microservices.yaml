@@ -1,0 +1,32 @@
+apiVersion: cicd.nguiland.io/v1alpha1
+kind: DependencyGraph
+metadata:
+  name: microservices
+  namespace: ostock
+spec:
+  repositories:
+    - name: license-service
+      dependencies:
+        - name: ms-parent
+        - name: nguiland-io-utils
+          namespace: maven
+        - name: nguiland-web-oauth2
+          namespace: maven
+        - name: nguiland-rest
+          namespace: maven
+        - name: cross-cutting-concerns
+        - name: orm
+        - name: dto
+    - name: organization-service
+      dependencies:
+        - name: ms-parent
+        - name: nguiland-io-utils
+          namespace: maven
+        - name: nguiland-web-oauth2
+          namespace: maven
+        - name: nguiland-rest
+          namespace: maven
+        - name: cross-cutting-concerns
+        - name: orm
+        - name: dto
+    - name: angular-frontend
